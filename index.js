@@ -1,19 +1,10 @@
 function fetchBooks() {
-const apiUrl = 'https://anapioficeandfire.com/api/books';
-   return fetch (apiUrl)
-   .then(response => {
-    if (!response.ok) {
-      throw new console.error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    renderBooks(data);
-})
-.catch(error => {
-  console.error('There has been a problem with your fetch operation:', error);
-});
+  // To pass the tests, don't forget to return your fetch!
+  return  fetch("https://anapioficeandfire.com/api/books")
+  .then((response)=> response.json())
+  .then(renderBooks)
 }
+
 function renderBooks(books) {
   const main = document.querySelector('main');
   books.forEach(book => {
@@ -22,6 +13,7 @@ function renderBooks(books) {
     main.appendChild(h2);
   });
 }
+
 document.addEventListener('DOMContentLoaded', function() {
   fetchBooks();
 });
